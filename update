@@ -1,0 +1,28 @@
+#!/bin/bash -e
+
+echo "==========="
+echo " UPDATE"
+echo "==========="
+# First do apt-get update
+/usr/bin/sudo apt-get update
+
+echo "==========="
+echo " UPGRADE"
+echo "==========="
+# Then the upgrade
+/usr/bin/sudo apt-get -y upgrade
+
+echo "============="
+echo " RPI-UPDATE"
+echo "============="
+# Finally rpi-update
+/usr/bin/sudo rpi-update
+
+echo "====================="
+echo " INSTALLING DRIVERS"
+echo "====================="
+# Install any drivers that may have been disabled
+/usr/bin/sudo /home/pi/Downloads/install-wifi
+
+# Trigger a reboot
+/usr/bin/sudo shutdown -r
